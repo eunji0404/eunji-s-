@@ -3,716 +3,980 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>₊˚⊹ 은지의 파니룸 & 싸이 미니홈피 ₊˚⊹</title>
+    <title>eunji's room * ੈ✩</title>
+    <!-- 2026 트렌디 폰트: Pretendard & Plus Jakarta Sans -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #f7e8f0;
-            --main-pink: #ff85b3;
-            --soft-pink: #ffeaf3;
-            --point-pink: #ff5293;
-            --dark-pink: #d8457b;
-            --border-gray: #c5c5c5;
-            --text-main: #4a4a4a;
-            --text-sub: #787878;
-            --line-color: #e5d2dc;
+            --bg: #f8f6f8;
+            --window-bg: #ffffff;
+            --inner-bg: #fdfafd;
+            --primary-pink: #ff6584;
+            --sub-pink: #fff0f3;
+            --accent-yellow: #fff4d4;
+            --text-title: #1e1e24;
+            --text-body: #4a4a52;
+            --text-muted: #8c8c99;
+            --border-soft: #ede6ed;
+            --border-dark: #d8ced8;
+            --card-shadow: 0 10px 30px -5px rgba(220, 160, 185, 0.15);
+            --radius-main: 22px;
+            --radius-inner: 16px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Gaegu', 'Noto Sans KR', 'Malgun Gothic', cursive, sans-serif;
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg);
             background-image: 
-                radial-gradient(#f1cadb 1.5px, transparent 1.5px),
-                radial-gradient(#f1cadb 1.5px, #f7e8f0 1.5px);
-            background-size: 24px 24px;
-            background-position: 0 0, 12px 12px;
+                radial-gradient(#eedee7 1.2px, transparent 1.2px),
+                radial-gradient(#eedee7 1.2px, #f8f6f8 1.2px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            color: var(--text-main);
+            padding: 24px 16px;
+            color: var(--text-body);
         }
 
-        /* 싸이월드 미니홈피 외곽 창 틀 */
-        .minihompy-window {
-            background: #eef2f5;
-            border: 2px solid #b2bec3;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(230, 140, 175, 0.35), 0 0 0 6px #ffffff;
-            width: 1020px;
-            max-width: 98vw;
+        /* 윈도우 메인 프레임 */
+        .hompy-window {
+            background: var(--window-bg);
+            width: 1040px;
+            max-width: 96vw;
+            border-radius: var(--radius-main);
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 20px 60px -15px rgba(185, 125, 155, 0.2), 0 0 0 1px rgba(255,255,255,0.8);
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: visible;
+            position: relative;
         }
 
-        /* 윈도우 상단 타이틀 바 */
-        .window-header {
-            background: linear-gradient(90deg, #ff9ec4, #ffb6c1);
-            padding: 8px 16px;
+        /* 윈도우 상단 바 */
+        .window-topbar {
+            padding: 14px 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #ff7fae;
-            color: white;
-            font-size: 1.15rem;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+            border-bottom: 1px solid var(--border-soft);
+            background: #ffffff;
+            border-top-left-radius: var(--radius-main);
+            border-top-right-radius: var(--radius-main);
         }
 
-        .window-header .header-buttons {
+        .window-dots {
             display: flex;
+            gap: 7px;
+        }
+        .window-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+        .dot-close { background: #ff5f57; }
+        .dot-min { background: #febc2e; }
+        .dot-max { background: #28c840; }
+
+        .window-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
             gap: 6px;
         }
-
-        .header-btn {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 1px solid rgba(0,0,0,0.15);
-            display: inline-block;
+        .window-title .badge {
+            background: var(--sub-pink);
+            color: var(--primary-pink);
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
         }
-        .header-btn.red { background: #ff5f56; }
-        .header-btn.yellow { background: #ffbd2e; }
-        .header-btn.green { background: #27c93f; }
 
-        /* 미니홈피 내부 2단 메인 레이아웃 */
-        .hompy-wrapper {
+        .window-actions {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* 2단 메인 레이아웃 */
+        .hompy-body {
             display: flex;
-            padding: 16px 20px 24px 20px;
-            gap: 16px;
-            background: #d8e5ee;
-            border: 2px dashed #bac9d6;
-            margin: 10px;
-            border-radius: 12px;
+            padding: 20px 24px 28px 24px;
+            gap: 20px;
+            background: var(--inner-bg);
+            border-bottom-left-radius: var(--radius-main);
+            border-bottom-right-radius: var(--radius-main);
             position: relative;
         }
 
-        /* ================== 왼쪽 사이드바 (프로필) ================== */
-        .left-sidebar {
-            width: 250px;
+        /* ================= 왼쪽 사이드바 (프로필) ================= */
+        .sidebar {
+            width: 270px;
             flex-shrink: 0;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid #bfd0dc;
-            padding: 14px;
             display: flex;
             flex-direction: column;
+            gap: 16px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: var(--radius-inner);
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--card-shadow);
+            padding: 18px;
+        }
+
+        /* TODAY / TOTAL */
+        .traffic-bar {
+            display: flex;
             justify-content: space-between;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.03);
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+            border-bottom: 1px dashed var(--border-soft);
+        }
+        .traffic-bar strong {
+            color: var(--text-title);
+            font-weight: 700;
+        }
+        .traffic-bar .today-val {
+            color: var(--primary-pink);
+            font-weight: 800;
         }
 
-        /* 방문자 수 */
-        .visit-counter {
-            font-size: 1.05rem;
-            color: #666;
+        /* 프로필 영역 */
+        .profile-card {
             text-align: center;
-            border-bottom: 1px dashed #e2e8ee;
-            padding-bottom: 8px;
-            margin-bottom: 12px;
-        }
-        .visit-counter .today {
-            color: var(--point-pink);
-            font-weight: bold;
-        }
-        .visit-counter .total {
-            color: #555;
-            font-weight: bold;
         }
 
-        /* 프로필 사진 / 미니미 박스 */
-        .profile-box {
-            text-align: center;
-            border: 1px solid #ffccd9;
-            border-radius: 10px;
-            padding: 10px;
-            background: #fff8fb;
-            position: relative;
-        }
-
-        .avatar-img-wrap {
+        .avatar-frame {
             width: 140px;
             height: 140px;
-            margin: 0 auto 10px;
+            margin: 0 auto 12px;
+            position: relative;
+            background: radial-gradient(circle, #fff7fa 0%, #ffe9f0 100%);
             border-radius: 50%;
-            background: linear-gradient(135deg, #ffd1e4, #ffeef5);
-            border: 3px solid #ff9ec4;
+            border: 2px solid #ffd4e2;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4.5rem;
-            position: relative;
-            box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 16px rgba(255, 101, 132, 0.12);
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .avatar-img-wrap:hover {
-            transform: scale(1.05) rotate(3deg);
+        .avatar-frame:hover {
+            transform: scale(1.06) rotate(-2deg);
         }
 
-        .avatar-badge {
+        .avatar-img {
+            width: 105px;
+            height: 105px;
+            object-fit: contain;
+            animation: gentleFloat 3s ease-in-out infinite alternate;
+        }
+        @keyframes gentleFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .avatar-tag {
             position: absolute;
-            bottom: -4px;
-            right: 4px;
-            background: var(--point-pink);
-            color: white;
-            font-size: 0.85rem;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-weight: bold;
-        }
-
-        /* 기분 & 상태 메시지 */
-        .today-feeling {
-            display: inline-block;
-            background: #ffe3ee;
-            color: var(--dark-pink);
+            bottom: 0;
+            background: #1e1e24;
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
             padding: 3px 10px;
             border-radius: 20px;
-            font-size: 1.05rem;
-            margin-bottom: 8px;
-            border: 1px solid #ffbfd8;
+            letter-spacing: 0.5px;
         }
 
-        .profile-desc {
+        .profile-name {
             font-size: 1.15rem;
-            line-height: 1.4;
-            color: #555;
-            margin: 8px 0;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 4px;
+        }
+
+        .profile-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f7f5f8;
+            border: 1px solid var(--border-soft);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+        }
+
+        .profile-bio {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: var(--text-body);
             word-break: keep-all;
+            background: #faf8fa;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-soft);
         }
 
-        /* 파도타기 & 일촌 선택 드롭다운 */
-        .wave-box {
-            margin-top: 14px;
-            border-top: 1px dashed #e2e8ee;
-            padding-top: 10px;
-        }
-        .wave-select {
-            width: 100%;
-            padding: 6px;
-            border: 1px solid #ffb2ce;
-            border-radius: 6px;
-            background: #fff;
-            color: #555;
-            font-size: 1rem;
-            outline: none;
-            cursor: pointer;
+        /* 2026 트렌디 BGM 플레이어 위젯 */
+        .bgm-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-inner);
+            box-shadow: var(--card-shadow);
         }
 
-        /* 왼쪽 하단 미니 BGM 플레이어 */
-        .bgm-widget {
-            background: #fff0f6;
-            border: 1px solid #ffd1e3;
+        .album-art {
+            width: 40px;
+            height: 40px;
             border-radius: 8px;
-            padding: 8px 10px;
-            margin-top: 12px;
+            background: linear-gradient(135deg, #ff9bb3, #ff6584);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .album-art img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .bgm-details {
+            flex-grow: 1;
+            min-width: 0;
+        }
+        .bgm-song {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--text-title);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .bgm-artist {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .bgm-play-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--text-title);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: transform 0.15s;
+            flex-shrink: 0;
+        }
+        .bgm-play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* 빠른 이동 링크 */
+        .quick-links {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .quick-link-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 0.82rem;
+            color: var(--text-body);
+            text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
-        .bgm-info {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.95rem;
-            color: var(--dark-pink);
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .bgm-note {
-            animation: bounce 1s infinite alternate;
-        }
-        @keyframes bounce {
-            from { transform: translateY(0); }
-            to { transform: translateY(-4px); }
-        }
-        .bgm-btn {
-            background: var(--main-pink);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 3px 8px;
-            font-size: 0.85rem;
+            transition: all 0.2s;
             cursor: pointer;
-            transition: 0.2s;
         }
-        .bgm-btn:hover {
-            background: var(--point-pink);
+        .quick-link-btn:hover {
+            background: var(--sub-pink);
+            border-color: #ffd4e2;
+            color: var(--primary-pink);
         }
 
-        /* ================== 오른쪽 메인 본문 ================== */
-        .main-content-wrap {
+        /* ================= 오른쪽 메인 콘텐츠 ================= */
+        .main-column {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             min-width: 0;
         }
 
-        /* 상단 홈피 제목 & 주소 */
-        .hompy-top-header {
+        /* 메인 상단 헤더 */
+        .content-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 8px;
+            align-items: center;
+            margin-bottom: 12px;
             padding: 0 4px;
         }
-        .hompy-title {
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #2b4458;
-            letter-spacing: -0.5px;
+        .header-title-box h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-title);
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .hompy-title span {
-            color: var(--point-pink);
-        }
-        .hompy-url {
-            font-size: 0.95rem;
-            color: #647b8d;
+        .header-path {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* 본문 흰색 캔버스 프레임 */
-        .content-canvas {
+        /* 메인 흰색 보드 */
+        .content-board {
             background: #ffffff;
-            border: 1px solid #bfd0dc;
-            border-radius: 12px;
-            padding: 20px;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-inner);
+            box-shadow: var(--card-shadow);
+            padding: 24px;
             flex-grow: 1;
-            min-height: 480px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.03);
+            min-height: 520px;
             overflow-y: auto;
-            max-height: 600px;
+            position: relative;
         }
 
-        /* ================== 오른쪽 사이드 탭 버튼 ================== */
-        .tab-menu-list {
+        /* ================= 탭 메뉴 ================= */
+        .tabs-container {
             position: absolute;
-            right: -60px;
-            top: 45px;
+            right: -58px;
+            top: 60px;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
             list-style: none;
         }
 
-        .tab-item {
-            width: 70px;
-            height: 38px;
-            background: #5282a6;
-            color: white;
-            border: 1px solid #436d8d;
+        .tab-btn {
+            width: 64px;
+            height: 42px;
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
             border-left: none;
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 12px 12px 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.15rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.02);
+            position: relative;
+        }
+        .tab-btn:hover {
+            width: 70px;
+            color: var(--primary-pink);
+            background: #fffbfe;
+        }
+        .tab-btn.active {
+            background: var(--text-title);
+            color: #ffffff;
+            border-color: var(--text-title);
+            width: 74px;
+            box-shadow: 4px 6px 14px rgba(30, 30, 36, 0.18);
         }
 
-        .tab-item:hover {
-            width: 75px;
-            background: #3f6e91;
-        }
-
-        .tab-item.active {
-            background: #ffffff;
-            color: var(--point-pink);
-            font-weight: bold;
-            border: 1px solid #bfd0dc;
-            border-left: none;
-            width: 76px;
-            box-shadow: 3px 2px 5px rgba(0,0,0,0.05);
-        }
-
-        /* ================== 탭별 화면 (섹션) ================== */
-        .tab-section {
+        /* ================= 탭 화면 섹션들 ================= */
+        .section-view {
             display: none;
-            animation: fadeIn 0.3s ease-in-out;
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .tab-section.active {
+        .section-view.active {
             display: block;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* [1. 홈 탭] */
-        .sub-title {
-            font-size: 1.4rem;
-            color: var(--dark-pink);
-            border-bottom: 2px dashed #ffd1e3;
-            padding-bottom: 6px;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* 파니룸 / 미니룸 비주얼 박스 */
-        .miniroom-container {
-            background: linear-gradient(180deg, #fff0f6 0%, #ffe3ef 65%, #ffd6e6 100%);
-            border: 2px solid #ffbdd6;
-            border-radius: 12px;
-            padding: 20px;
-            position: relative;
+        /* 치이카와 인터랙티브 미니룸 */
+        .miniroom-box {
+            background: radial-gradient(circle at 50% 30%, #fff7f9 0%, #fbedf3 100%);
+            border: 1px solid #ffd4e2;
+            border-radius: 16px;
             height: 250px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 24px;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            overflow: hidden;
-            box-shadow: inset 0 2px 8px rgba(255, 133, 179, 0.15);
-            margin-bottom: 20px;
+            box-shadow: inset 0 2px 10px rgba(255, 101, 132, 0.05);
         }
 
-        /* 파니룸 바닥 타일 */
-        .miniroom-floor {
+        /* 룸 배경 격자 타일 */
+        .room-floor {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
             height: 70px;
-            background: repeating-linear-gradient(
-                45deg,
-                #ffc5dd,
-                #ffc5dd 12px,
-                #ffd1e4 12px,
-                #ffd1e4 24px
-            );
-            border-top: 2px solid #ffaecf;
-            z-index: 1;
+            background: 
+                linear-gradient(45deg, #ffdce7 25%, transparent 25%), 
+                linear-gradient(-45deg, #ffdce7 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #ffdce7 75%), 
+                linear-gradient(-45deg, transparent 75%, #ffdce7 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            border-top: 1px solid #ffccd9;
+            opacity: 0.6;
         }
 
-        /* 파니룸 벽지 장식들 */
-        .room-decor {
+        /* 방 장식 오브젝트들 (치이카와 스티커 활용) */
+        .decor-item {
             position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+        }
+        .decor-item:hover {
+            transform: scale(1.18);
+        }
+        .decor-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
+        }
+
+        .decor-hachiware {
+            width: 72px;
+            height: 72px;
+            bottom: 25px;
+            left: 55px;
+            z-index: 3;
+        }
+        .decor-chiikawa {
+            width: 65px;
+            height: 65px;
+            bottom: 25px;
+            right: 65px;
+            z-index: 3;
+        }
+        .decor-sun {
+            width: 50px;
+            height: 50px;
+            top: 20px;
+            right: 35px;
             z-index: 2;
-            cursor: pointer;
-            transition: transform 0.2s;
         }
-        .room-decor:hover {
-            transform: scale(1.15) rotate(5deg);
+        .decor-music {
+            width: 48px;
+            height: 48px;
+            top: 25px;
+            left: 40px;
+            z-index: 2;
         }
 
-        .decor-window { top: 15px; left: 30px; font-size: 3.5rem; }
-        .decor-clock { top: 18px; right: 50px; font-size: 2.2rem; }
-        .decor-frame { top: 30px; left: 160px; font-size: 2.6rem; }
-        .decor-bed { bottom: 20px; left: 25px; font-size: 4rem; z-index: 3; }
-        .decor-desk { bottom: 25px; right: 35px; font-size: 3.8rem; z-index: 3; }
-        .decor-cat { bottom: 30px; left: 140px; font-size: 2.5rem; z-index: 4; }
-        .decor-plant { bottom: 35px; right: 130px; font-size: 2.8rem; z-index: 4; }
-
-        /* 중앙 미니미 캐릭터 */
-        .miniroom-avatar {
-            position: relative;
+        /* 센터 우사기 (애니메이션) */
+        .center-usagi {
+            width: 110px;
+            height: 110px;
+            margin-bottom: 12px;
             z-index: 5;
-            font-size: 5rem;
             cursor: pointer;
             transition: transform 0.2s;
-            margin-bottom: 10px;
-            animation: miniHop 2.5s infinite;
+            animation: usagiWiggle 1.4s ease-in-out infinite;
         }
-        @keyframes miniHop {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes usagiWiggle {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(4deg); }
+        }
+        .center-usagi:hover {
+            transform: scale(1.2) rotate(-5deg);
+        }
+        .center-usagi img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(255, 120, 150, 0.2));
         }
 
-        .avatar-speech {
+        /* 인터랙티브 말풍선 */
+        .room-speech-bubble {
             position: absolute;
-            top: 45px;
+            top: 35px;
             left: 50%;
             transform: translateX(-50%);
-            background: white;
-            border: 2px solid var(--point-pink);
-            border-radius: 16px;
-            padding: 6px 14px;
-            font-size: 1.15rem;
-            color: var(--point-pink);
-            font-weight: bold;
-            white-space: nowrap;
+            background: #ffffff;
+            border: 1px solid #ffd4e2;
+            box-shadow: 0 10px 25px rgba(255, 101, 132, 0.15);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-title);
             z-index: 10;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
             display: none;
+            white-space: nowrap;
         }
-        .avatar-speech::after {
+        .room-speech-bubble::after {
             content: '';
             position: absolute;
-            bottom: -8px;
+            bottom: -6px;
             left: 50%;
             transform: translateX(-50%);
-            border-width: 8px 6px 0;
+            border-width: 6px 6px 0;
             border-style: solid;
-            border-color: var(--point-pink) transparent transparent;
+            border-color: #ffffff transparent transparent;
         }
 
-        /* 최근 소식 / 일촌평 리스트 */
-        .home-grid {
+        /* 홈 하단 2단 그리드 */
+        .home-sections-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 18px;
         }
 
-        .box-card {
-            background: #fafafa;
-            border: 1px solid #ebebeb;
-            border-radius: 8px;
-            padding: 12px;
-        }
-
-        .box-card h4 {
-            font-size: 1.15rem;
-            color: #4b6584;
-            margin-bottom: 8px;
+        .section-header-row {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .section-header-row h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-title);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .section-header-row .count-badge {
+            font-size: 0.72rem;
+            background: #f4f2f5;
+            color: var(--text-muted);
+            padding: 2px 7px;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
         }
 
-        .news-list, .ilchon-comment-list {
+        /* 최근 로그 리스트 */
+        .trendy-list {
             list-style: none;
-            font-size: 1.05rem;
-        }
-
-        .news-list li {
-            padding: 4px 0;
-            border-bottom: 1px dotted #e6e6e6;
-            display: flex;
-            justify-content: space-between;
-        }
-        .news-list li .badge {
-            background: #ffd6e6;
-            color: var(--point-pink);
-            border-radius: 4px;
-            padding: 1px 6px;
-            font-size: 0.85rem;
-        }
-
-        .ilchon-comment-list li {
-            padding: 6px 0;
-            border-bottom: 1px dotted #e6e6e6;
-            line-height: 1.3;
-        }
-        .ilchon-comment-list .writer {
-            font-weight: bold;
-            color: var(--dark-pink);
-        }
-
-        /* [2. 프로필 탭 - 10문 10답] */
-        .qna-list {
             display: flex;
             flex-direction: column;
+            gap: 8px;
+        }
+        .trendy-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 12px;
+            background: #faf8fa;
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+            font-size: 0.85rem;
+            color: var(--text-body);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .trendy-item:hover {
+            background: #ffffff;
+            border-color: #ffd4e2;
+            transform: translateX(3px);
+        }
+        .trendy-item .tag {
+            font-size: 0.7rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--primary-pink);
+            background: var(--sub-pink);
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+
+        /* 친구 피드 (2026 한줄 피드) */
+        .friend-feed-item {
+            display: flex;
             gap: 10px;
+            padding: 10px 12px;
+            background: #faf8fa;
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
-        .qna-item {
-            background: #fff8fb;
-            border: 1px solid #ffd6e6;
-            border-radius: 8px;
-            padding: 10px 14px;
+        .feed-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
-        .qna-q {
-            font-weight: bold;
-            color: var(--point-pink);
-            font-size: 1.15rem;
-            margin-bottom: 4px;
+        .feed-author {
+            font-weight: 700;
+            color: var(--text-title);
+            margin-right: 6px;
         }
-        .qna-a {
-            font-size: 1.1rem;
-            color: #444;
-            padding-left: 10px;
+        .feed-text {
+            color: var(--text-body);
+        }
+
+        /* [2. 프로필 탭 - 2026 Q&A 카드] */
+        .profile-qa-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .qa-card {
+            background: #faf8fa;
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 14px;
+            transition: border-color 0.2s;
+        }
+        .qa-card:hover {
+            border-color: #ffd4e2;
+            background: #ffffff;
+        }
+        .qa-question {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .qa-answer {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-title);
         }
 
         /* [3. 다이어리 탭] */
-        .diary-card {
-            border: 1px solid #ffd6e6;
-            border-radius: 10px;
-            padding: 14px;
-            background: #fffdfd;
-            margin-bottom: 14px;
+        .diary-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
-        .diary-date {
+        .diary-card {
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
+            border-radius: 14px;
+            padding: 18px;
+            transition: all 0.2s;
+        }
+        .diary-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border-color: #ffd4e2;
+        }
+        .diary-meta {
             display: flex;
             justify-content: space-between;
-            color: #647b8d;
-            font-size: 1.1rem;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-soft);
+        }
+        .diary-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-title);
             margin-bottom: 8px;
-            border-bottom: 1px dashed #ffd6e6;
-            padding-bottom: 4px;
         }
-        .diary-date .weather {
-            color: var(--point-pink);
-        }
-        .diary-body {
-            font-size: 1.2rem;
+        .diary-content {
+            font-size: 0.9rem;
             line-height: 1.6;
-            color: #444;
+            color: var(--text-body);
+        }
+        .diary-stickers {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .diary-sticker-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
         }
 
         /* [4. 사진첩 탭] */
-        .photo-gallery {
+        .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
             gap: 16px;
         }
-        .polaroid-card {
-            background: white;
-            border: 1px solid #e2e2e2;
-            padding: 10px 10px 16px 10px;
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.2s;
+        .polaroid-item {
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 10px 10px 14px 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.25s, box-shadow 0.25s;
+            cursor: pointer;
         }
-        .polaroid-card:hover {
-            transform: translateY(-4px) rotate(1deg);
+        .polaroid-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(255, 101, 132, 0.12);
+            border-color: #ffd4e2;
         }
-        .polaroid-img {
+        .photo-display {
             width: 100%;
-            height: 160px;
-            background: #ffeef5;
-            border-radius: 4px;
+            height: 180px;
+            border-radius: 8px;
+            background: #fbf7f9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            margin-bottom: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
         }
-        .polaroid-caption {
-            font-size: 1.1rem;
-            color: #555;
-            font-weight: bold;
+        .photo-display img {
+            width: 85px;
+            height: 85px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        .polaroid-item:hover .photo-display img {
+            transform: scale(1.15) rotate(3deg);
+        }
+        .photo-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 3px;
+        }
+        .photo-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* [5. 방명록 탭] */
-        .guestbook-input-box {
-            background: #fff8fb;
-            border: 2px dashed #ffbdd6;
-            border-radius: 10px;
-            padding: 14px;
-            margin-bottom: 20px;
+        /* [5. 방명록 탭 - 치이카와 스티커 선택] */
+        .guest-compose-box {
+            background: #faf8fa;
+            border: 1px solid var(--border-soft);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 24px;
         }
-        .input-row {
+        .compose-header {
             display: flex;
             gap: 10px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            align-items: center;
         }
-        .guest-input {
-            padding: 6px 10px;
-            border: 1px solid #ffccd9;
-            border-radius: 6px;
-            font-size: 1.05rem;
+        .compose-input {
+            padding: 8px 12px;
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            background: #ffffff;
             outline: none;
+            transition: border-color 0.2s;
         }
-        .guest-input.name {
-            width: 140px;
+        .compose-input:focus {
+            border-color: var(--primary-pink);
         }
-        .guest-textarea {
-            width: 100%;
-            height: 60px;
-            padding: 8px 10px;
-            border: 1px solid #ffccd9;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            resize: none;
-            outline: none;
-            margin-bottom: 8px;
-        }
-        .guest-submit-btn {
-            background: var(--point-pink);
-            color: white;
-            border: none;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 1.15rem;
-            cursor: pointer;
-            transition: 0.2s;
-            float: right;
-        }
-        .guest-submit-btn:hover {
-            background: var(--dark-pink);
+        .compose-name {
+            width: 130px;
         }
 
-        .guest-list {
+        /* 스티커 선택 팔레트 */
+        .sticker-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            overflow-x: auto;
+            padding: 4px 0;
+        }
+        .sticker-option {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            background: #ffffff;
+            cursor: pointer;
+            padding: 3px;
+            transition: all 0.15s;
+        }
+        .sticker-option.selected {
+            border-color: var(--primary-pink);
+            background: var(--sub-pink);
+            transform: scale(1.1);
+        }
+        .sticker-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .compose-textarea {
+            width: 100%;
+            height: 70px;
+            padding: 10px 12px;
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            resize: none;
+            outline: none;
+            margin: 10px 0;
+            background: #ffffff;
+        }
+        .compose-textarea:focus {
+            border-color: var(--primary-pink);
+        }
+
+        .compose-submit-btn {
+            background: var(--text-title);
+            color: #ffffff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            float: right;
+        }
+        .compose-submit-btn:hover {
+            background: var(--primary-pink);
+            transform: translateY(-1px);
+        }
+
+        /* 방명록 목록 */
+        .guest-entry-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-top: 10px;
         }
-        .guest-entry {
-            border: 1px solid #ffd6e6;
-            border-radius: 8px;
-            background: #fafafa;
-            padding: 12px;
+        .guest-entry-card {
+            display: flex;
+            gap: 14px;
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 14px;
+            transition: border-color 0.2s;
         }
-        .guest-header {
+        .guest-entry-card:hover {
+            border-color: #ffd4e2;
+        }
+        .guest-sticker-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: #fbf7f9;
+            padding: 4px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .guest-sticker-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .guest-body {
+            flex-grow: 1;
+        }
+        .guest-top {
             display: flex;
             justify-content: space-between;
-            font-size: 1.05rem;
-            color: #777;
-            border-bottom: 1px dotted #ffd6e6;
-            padding-bottom: 4px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
-        .guest-header .user {
-            color: var(--point-pink);
-            font-weight: bold;
+        .guest-author {
+            font-weight: 700;
+            color: var(--text-title);
+            font-size: 0.9rem;
         }
-        .guest-text {
-            font-size: 1.15rem;
-            color: #333;
-            line-height: 1.4;
+        .guest-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-
-        /* 하단 미니 도토리 표시 */
-        .dotori-bar {
-            text-align: right;
-            padding: 8px 20px 4px;
-            font-size: 0.95rem;
-            color: #8c7b83;
+        .guest-message {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: var(--text-body);
         }
 
-        /* 모바일 대응 반응형 */
+        /* 모바일 반응형 */
         @media (max-width: 900px) {
-            .minihompy-window {
-                width: 100%;
-            }
-            .hompy-wrapper {
+            .hompy-body {
                 flex-direction: column;
-                margin: 4px;
-                padding: 10px 10px 50px 10px;
+                padding: 14px 14px 40px 14px;
             }
-            .left-sidebar {
+            .sidebar {
                 width: 100%;
             }
-            .tab-menu-list {
+            .tabs-container {
                 position: static;
                 flex-direction: row;
                 width: 100%;
-                justify-content: space-around;
-                margin-top: 10px;
+                justify-content: space-between;
+                margin-top: 14px;
             }
-            .tab-item {
+            .tab-btn {
+                width: 100%;
+                height: 38px;
                 border-radius: 8px;
-                border-left: 1px solid #436d8d;
-                width: auto;
-                padding: 0 12px;
+                border-left: 1px solid var(--border-soft);
             }
-            .tab-item.active {
-                border-left: 1px solid #bfd0dc;
-                width: auto;
+            .tab-btn.active {
+                width: 100%;
             }
-            .home-grid {
+            .home-sections-grid, .profile-qa-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -720,411 +984,527 @@
 </head>
 <body>
 
-    <!-- 미니홈피 창 틀 -->
-    <div class="minihompy-window">
-        <!-- 윈도우 타이틀 바 -->
-        <div class="window-header">
-            <span>˚｡* 🎀 은지의 미니홈피 🎀 *｡˚</span>
-            <div class="header-buttons">
-                <span class="header-btn green"></span>
-                <span class="header-btn yellow"></span>
-                <span class="header-btn red"></span>
+    <!-- 미니홈피 창 -->
+    <div class="hompy-window">
+        
+        <!-- 상단 윈도우 바 -->
+        <header class="window-topbar">
+            <div class="window-dots">
+                <span class="window-dot dot-close"></span>
+                <span class="window-dot dot-min"></span>
+                <span class="window-dot dot-max"></span>
             </div>
-        </div>
+            <div class="window-title">
+                eunji's room <span class="badge">2026 ver.</span>
+            </div>
+            <div class="window-actions">
+                <span>https://eunji0404.github.io/eunji-s-</span>
+            </div>
+        </header>
 
-        <!-- 미니홈피 메인 바디 -->
-        <div class="hompy-wrapper">
+        <!-- 메인 프레임 바디 -->
+        <div class="hompy-body">
             
             <!-- 왼쪽 사이드바 (프로필) -->
-            <aside class="left-sidebar">
-                <div>
-                    <!-- 투데이 / 토탈 카운터 -->
-                    <div class="visit-counter">
-                        TODAY <span class="today" id="todayCount">404</span> | TOTAL <span class="total" id="totalCount">2004</span>
+            <aside class="sidebar">
+                
+                <div class="card profile-card">
+                    <!-- 투데이 / 토탈 -->
+                    <div class="traffic-bar">
+                        <span>TODAY <span class="today-val" id="todayNum">142</span></span>
+                        <span>TOTAL <strong>20,404</strong></span>
                     </div>
 
-                    <!-- 프로필 박스 -->
-                    <div class="profile-box">
-                        <div class="avatar-img-wrap" onclick="clickAvatar()" title="나를 클릭해봐!">
-                            🌸
-                            <span class="avatar-badge">Lv.99</span>
-                        </div>
-                        <div class="today-feeling">
-                            TODAY IS... <span style="font-weight:bold;">두근두근 🍓</span>
-                        </div>
-                        <p class="profile-desc">
-                            은지의 미니홈피에 오신 걸 환영해요!<br>
-                            좋은 하루 보내세요 ฅ^•ﻌ•^ฅ
-                        </p>
+                    <!-- 우사기 메인 아바타 -->
+                    <div class="avatar-frame" onclick="triggerUsagiReaction()" title="우사기를 터치해봐!">
+                        <img src="assets/usagi_main.png" alt="우사기" class="avatar-img" id="sidebarAvatar">
+                        <span class="avatar-tag">우사기 모드</span>
                     </div>
 
-                    <!-- 파도타기 메뉴 -->
-                    <div class="wave-box">
-                        <select class="wave-select" onchange="alert(this.value + ' (으)로 파도타기 슈웅-! 🌊')">
-                            <option value="">🌊 일촌 파도타기</option>
-                            <option value="영희의 미니홈피">💖 영희 미니홈피</option>
-                            <option value="철수의 다이어리">⭐ 철수 다이어리</option>
-                            <option value="민수의 파니룸">🍓 민수 파니룸</option>
-                            <option value="귀여운 토끼네">🐰 토끼네 다락방</option>
-                        </select>
+                    <h2 class="profile-name">김은지</h2>
+                    <div class="profile-status">
+                        <span class="status-dot"></span>
+                        <span>mood: 우사기처럼 살기</span>
+                    </div>
+
+                    <p class="profile-bio">
+                        현생 탈출 넘버원 (๑•̀ㅂ•́)و✧<br>
+                        야하~ 소리 지르면서 코딩하기
+                    </p>
+                </div>
+
+                <!-- 2026 트렌디 BGM 플레이어 위젯 -->
+                <div class="bgm-card">
+                    <div class="album-art">
+                        <img src="assets/stickers/sticker_19.png" alt="bgm sticker">
+                    </div>
+                    <div class="bgm-details">
+                        <div class="bgm-song" id="bgmSong">Bubble Gum</div>
+                        <div class="bgm-artist">NewJeans</div>
+                    </div>
+                    <button class="bgm-play-btn" id="playBtn" onclick="toggleMusic()">▶</button>
+                </div>
+
+                <!-- 퀵 링크 -->
+                <div class="quick-links">
+                    <a class="quick-link-btn" href="https://github.com/eunji0404" target="_blank">
+                        <span>GitHub Profile</span>
+                        <span>↗</span>
+                    </a>
+                    <div class="quick-link-btn" onclick="alert('야하-! 파도타기 완료 🌊')">
+                        <span>Random Surfing</span>
+                        <span>🏄</span>
                     </div>
                 </div>
 
-                <!-- BGM 플레이어 위젯 -->
-                <div class="bgm-widget">
-                    <div class="bgm-info">
-                        <span class="bgm-note">🎵</span>
-                        <span id="bgmTitle">Y - 프리스타일</span>
-                    </div>
-                    <button class="bgm-btn" id="bgmToggleBtn" onclick="toggleBGM()">재생 중 ▶</button>
-                </div>
             </aside>
 
             <!-- 오른쪽 메인 콘텐츠 -->
-            <main class="main-content-wrap">
-                <!-- 상단 헤더 -->
-                <div class="hompy-top-header">
-                    <div class="hompy-title">
-                        <span>✦</span> 은지의 아기자기 파니룸 <span>✦</span>
+            <main class="main-column">
+                
+                <div class="content-header">
+                    <div class="header-title-box">
+                        <h1 id="viewTitle">eunji's space * ੈ✩</h1>
                     </div>
-                    <div class="hompy-url">
-                        https://eunji0404.github.io/eunji-s-
-                    </div>
+                    <div class="header-path">root / minihompy / home</div>
                 </div>
 
-                <!-- 탭별 콘텐츠 영역 (캔버스) -->
-                <div class="content-canvas">
+                <!-- 메인 보드 -->
+                <div class="content-board">
                     
                     <!-- 1. [홈 탭] -->
-                    <section class="tab-section active" id="tab-home">
-                        <div class="sub-title">
-                            <span>🏠</span> Welcome to My PanyRoom!
-                        </div>
+                    <section class="section-view active" id="view-home">
+                        
+                        <!-- 치이카와 인터랙티브 미니룸 -->
+                        <div class="miniroom-box">
+                            <div class="room-speech-bubble" id="speechBubble">우라~ 야하-!! 🥕</div>
 
-                        <!-- 귀여운 파니룸 / 미니룸 비주얼 박스 -->
-                        <div class="miniroom-container">
-                            <!-- 방 장식 아이템들 -->
-                            <div class="room-decor decor-window" onclick="sayDecor('창밖엔 기분 좋은 봄바람이 살랑살랑 불고 있어요 🪟🌸')">🪟</div>
-                            <div class="room-decor decor-clock" onclick="sayDecor('벌써 은지의 홈피에 머문 지 시간이 이렇게 됐네요 ⏰')">⏰</div>
-                            <div class="room-decor decor-frame" onclick="sayDecor('파니랜드 친구들과 찍은 소중한 추억 액자예요 🖼️')">🖼️</div>
-                            <div class="room-decor decor-bed" onclick="sayDecor('포근포근 분홍빛 구름 침대에서 꿀잠 자는 중 🛏️💤')">🛏️</div>
-                            <div class="room-decor decor-desk" onclick="sayDecor('열심히 코딩하고 게임도 하는 은지의 보물 책상 💻✨')">💻</div>
-                            <div class="room-decor decor-cat" onclick="sayDecor('야옹~ 집사야 간식 줘라냥! 🐾')">🐱</div>
-                            <div class="room-decor decor-plant" onclick="sayDecor('무럭무럭 자라는 새싹 화분이에요 🪴')">🪴</div>
-
-                            <!-- 미니미 캐릭터 & 대사 풍선 -->
-                            <div class="avatar-speech" id="avatarSpeech">놀러와줘서 반가워요! 💕</div>
-                            <div class="miniroom-avatar" onclick="clickAvatar()" title="나를 클릭해봐!">
-                                👧🏻
+                            <!-- 배경 장식 (치이카와 스티커들) -->
+                            <div class="decor-item decor-music" onclick="popSpeech('BGM 신나게 틀어놓는 중 🎧')">
+                                <img src="assets/stickers/sticker_32.png" alt="춤추는 치이카와">
+                            </div>
+                            <div class="decor-item decor-sun" onclick="popSpeech('햇살 쨍쨍 기분 굿 ☀️')">
+                                <img src="assets/stickers/sticker_16.png" alt="선글라스 우사기">
+                            </div>
+                            <div class="decor-item decor-hachiware" onclick="popSpeech('하치와레: 괜찮아! 어떻게든 될 거야 ✨')">
+                                <img src="assets/stickers/sticker_8.png" alt="하치와레">
+                            </div>
+                            <div class="decor-item decor-chiikawa" onclick="popSpeech('치이카와: 와아... (눈물 글썽) 🥺')">
+                                <img src="assets/stickers/sticker_3.png" alt="치이카와">
                             </div>
 
-                            <div class="miniroom-floor"></div>
+                            <!-- 중앙 우사기 -->
+                            <div class="center-usagi" onclick="popSpeech('우사기: 야하---! 푹 쉬다 가라구~ 🐰✨')" title="클릭해보세요!">
+                                <img src="assets/usagi_main.png" alt="우사기">
+                            </div>
+
+                            <div class="room-floor"></div>
                         </div>
 
-                        <!-- 최근 소식 및 일촌평 -->
-                        <div class="home-grid">
-                            <div class="box-card">
-                                <h4>최근 게시물 <span style="font-size:0.9rem; color:#aaa;">What's New</span></h4>
-                                <ul class="news-list">
-                                    <li><span>🌸 새로운 파니룸 테마 오픈!</span> <span class="badge">NEW</span></li>
-                                    <li><span>📖 오늘 나의 소소한 일기 추가</span> <span class="badge">Diary</span></li>
-                                    <li><span>📷 봄맞이 벚꽃 스냅사진</span> <span class="badge">Photo</span></li>
+                        <!-- 홈 하단 그리드 -->
+                        <div class="home-sections-grid">
+                            
+                            <!-- 최근 로그 -->
+                            <div>
+                                <div class="section-header-row">
+                                    <h3>Recent Logs</h3>
+                                    <span class="count-badge">3</span>
+                                </div>
+                                <ul class="trendy-list">
+                                    <li class="trendy-item" onclick="switchTabDirect('diary')">
+                                        <span>우사기 빙의해서 깃허브 뜯어고침</span>
+                                        <span class="tag">Diary</span>
+                                    </li>
+                                    <li class="trendy-item" onclick="switchTabDirect('photo')">
+                                        <span>먼작귀 팝업 스토어 털고 온 후기</span>
+                                        <span class="tag">Photo</span>
+                                    </li>
+                                    <li class="trendy-item" onclick="switchTabDirect('profile')">
+                                        <span>2026 프로필 문답 업데이트</span>
+                                        <span class="tag">About</span>
+                                    </li>
                                 </ul>
                             </div>
 
-                            <div class="box-card">
-                                <h4>일촌평 <span style="font-size:0.9rem; color:#aaa;">Friends say</span></h4>
-                                <ul class="ilchon-comment-list">
-                                    <li><span class="writer">딸기공주:</span> 은지야 홈피 너무 귀엽다 대박 🍓</li>
-                                    <li><span class="writer">코딩초보:</span> 파도타다 들렀어요~ 일촌 맺어요! 🏄</li>
-                                    <li><span class="writer">도토리부자:</span> 도토리 선물 두고 갑니다 총총.. 🌰</li>
-                                </ul>
+                            <!-- 한줄 피드 -->
+                            <div>
+                                <div class="section-header-row">
+                                    <h3>Friends Feed</h3>
+                                    <span class="count-badge">Live</span>
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:8px;">
+                                    <div class="friend-feed-item">
+                                        <img src="assets/stickers/sticker_1.png" class="feed-avatar" alt="avatar">
+                                        <div>
+                                            <span class="feed-author">민지</span>
+                                            <span class="feed-text">야 홈피 개깔끔하다 치이카와 존귀 ㅋㅋㅋ</span>
+                                        </div>
+                                    </div>
+                                    <div class="friend-feed-item">
+                                        <img src="assets/stickers/sticker_14.png" class="feed-avatar" alt="avatar">
+                                        <div>
+                                            <span class="feed-author">수현</span>
+                                            <span class="feed-text">우사기 궁디 흔드는 거 중독성 미쳤음</span>
+                                        </div>
+                                    </div>
+                                    <div class="friend-feed-item">
+                                        <img src="assets/stickers/sticker_26.png" class="feed-avatar" alt="avatar">
+                                        <div>
+                                            <span class="feed-author">동기</span>
+                                            <span class="feed-text">과제 던지고 놀러왔다 은지야 살려줘</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
+
                     </section>
 
                     <!-- 2. [프로필 탭] -->
-                    <section class="tab-section" id="tab-profile">
-                        <div class="sub-title">
-                            <span>🎀</span> 은지의 10문 10답 파니 프로필
+                    <section class="section-view" id="view-profile">
+                        <div class="section-header-row" style="margin-bottom:16px;">
+                            <h3>Profile & Favorites</h3>
+                            <span class="count-badge">About Eunji</span>
                         </div>
-                        <div class="qna-list">
-                            <div class="qna-item">
-                                <div class="qna-q">Q1. 내 이름 / 별명은?</div>
-                                <div class="qna-a">은지 / 은디, 핑크공주 (❁´◡`❁)</div>
+                        <div class="profile-qa-grid">
+                            <div class="qa-card">
+                                <div class="qa-question">Nickname</div>
+                                <div class="qa-answer">은지 / 은디 (가끔 우사기) 🐰</div>
                             </div>
-                            <div class="qna-item">
-                                <div class="qna-q">Q2. 요즘 가장 푹 빠져 있는 것은?</div>
-                                <div class="qna-a">깃허브 미니홈피 예쁘게 꾸미기랑 귀여운 게임 만들기! 🎮</div>
+                            <div class="qa-card">
+                                <div class="qa-question">Current Obsession</div>
+                                <div class="qa-answer">먼작귀(치이카와) 굿즈 수집 & 귀여운 웹 만들기</div>
                             </div>
-                            <div class="qna-item">
-                                <div class="qna-q">Q3. 좋아하는 색깔은?</div>
-                                <div class="qna-a">딸기우유빛 연분홍색, 파스텔 라벤더 🌸</div>
+                            <div class="qa-card">
+                                <div class="qa-question">Favorite Color</div>
+                                <div class="qa-answer">버터 옐로우, 파스텔 핑크, 밀크 화이트</div>
                             </div>
-                            <div class="qna-item">
-                                <div class="qna-q">Q4. 나만의 보물 1호는?</div>
-                                <div class="qna-a">내 노트북과 소중한 친구들 💕</div>
+                            <div class="qa-card">
+                                <div class="qa-question">Daily Routine</div>
+                                <div class="qa-answer">아이스 아메리카노 수혈 + 유튜브 알고리즘 탐방</div>
                             </div>
-                            <div class="qna-item">
-                                <div class="qna-q">Q5. 놀러 온 친구들에게 하고 싶은 말!</div>
-                                <div class="qna-a">방명록에 따뜻한 한 줄 남겨주시면 은지에게 큰 힘이 됩니다 💌</div>
+                            <div class="qa-card">
+                                <div class="qa-question">Life Motto</div>
+                                <div class="qa-answer">"어떻게든 되겠지~ 야하-!" (우사기 마인드셋)</div>
+                            </div>
+                            <div class="qa-card">
+                                <div class="qa-question">Playlist</div>
+                                <div class="qa-answer">NewJeans, Laufey, 요즘 꽂힌 이지리스닝 팝</div>
                             </div>
                         </div>
                     </section>
 
                     <!-- 3. [다이어리 탭] -->
-                    <section class="tab-section" id="tab-diary">
-                        <div class="sub-title">
-                            <span>📖</span> 소소한 감성 다이어리
+                    <section class="section-view" id="view-diary">
+                        <div class="section-header-row" style="margin-bottom:16px;">
+                            <h3>Daily Records</h3>
+                            <span class="count-badge">2 Stories</span>
                         </div>
-                        <div class="diary-card">
-                            <div class="diary-date">
-                                <span>2026. 11. 12 (목)</span>
-                                <span class="weather">날씨: 기분 최고 맑음 ☀️</span>
-                            </div>
-                            <div class="diary-body">
-                                드디어 내 깃허브 페이지를 싸이월드 & 파니랜드 스타일로 새롭게 리모델링했다!<br>
-                                분홍빛 미니룸에 귀여운 가구들도 배치하고 아기자기하게 꾸미니까 옛날 감성도 나고 너무 뿌듯하다.<br>
-                                자주 놀러와서 일기도 쓰고 사진도 올려야지. (｡♥‿♥｡)
-                            </div>
-                        </div>
-                        <div class="diary-card">
-                            <div class="diary-date">
-                                <span>2026. 11. 10 (화)</span>
-                                <span class="weather">날씨: 쌀쌀하지만 따뜻한 커피 ☕</span>
-                            </div>
-                            <div class="diary-body">
-                                붕어빵의 계절이 돌아왔다. 슈크림 vs 팥 중에 고민하다가 결국 둘 다 사 먹었다. 행복 별 거 없다! 🐟
-                            </div>
+                        <div class="diary-container">
+                            <article class="diary-card">
+                                <div class="diary-meta">
+                                    <span>2026. 11. 12</span>
+                                    <span>status: 힐링 충전 완료</span>
+                                </div>
+                                <h4 class="diary-title">깃허브 블로그 2026 버전으로 전면 개편</h4>
+                                <p class="diary-content">
+                                    촌스러운 요소들 싹 걷어내고 치이카와 & 우사기 스티커 잔뜩 넣어서 완성했다.<br>
+                                    가운데서 우사기가 꼬리 흔들면서 춤추는 거 볼 때마다 은근히 힐링되는 중.<br>
+                                    앞으로 여기에 재미있는 프로젝트랑 기록들 자주 남겨야지.
+                                </p>
+                                <div class="diary-stickers">
+                                    <img src="assets/stickers/sticker_14.png" class="diary-sticker-img" alt="우사기 신남">
+                                    <img src="assets/stickers/sticker_9.png" class="diary-sticker-img" alt="하치와레 반짝">
+                                </div>
+                            </article>
+
+                            <article class="diary-card">
+                                <div class="diary-meta">
+                                    <span>2026. 11. 08</span>
+                                    <span>weather: 쌀쌀함</span>
+                                </div>
+                                <h4 class="diary-title">소소하고 확실한 행복</h4>
+                                <p class="diary-content">
+                                    뜨끈한 라멘 한 그릇 먹고 집 와서 넷플릭스 보기. 추운 날엔 전기장판 속이 세상에서 제일 안전하다.
+                                </p>
+                                <div class="diary-stickers">
+                                    <img src="assets/stickers/sticker_34.png" class="diary-sticker-img" alt="쿠리만쥬">
+                                </div>
+                            </article>
                         </div>
                     </section>
 
                     <!-- 4. [사진첩 탭] -->
-                    <section class="tab-section" id="tab-photo">
-                        <div class="sub-title">
-                            <span>📷</span> 은지의 폴라로이드 사진첩
+                    <section class="section-view" id="view-photo">
+                        <div class="section-header-row" style="margin-bottom:16px;">
+                            <h3>Photo Archive</h3>
+                            <span class="count-badge">4 Moments</span>
                         </div>
-                        <div class="photo-gallery">
-                            <div class="polaroid-card" onclick="alert('🌸 벚꽃 흩날리던 어느 봄날!')">
-                                <div class="polaroid-img">🌸</div>
-                                <div class="polaroid-caption">봄날의 산책</div>
+                        <div class="photo-grid">
+                            <div class="polaroid-item" onclick="alert('우사기: 야하-!! 파티 타임 🥳')">
+                                <div class="photo-display">
+                                    <img src="assets/stickers/sticker_15.png" alt="party usagi">
+                                </div>
+                                <div class="photo-title">Party Night</div>
+                                <div class="photo-date">2026. 11. 12</div>
                             </div>
-                            <div class="polaroid-card" onclick="alert('☕ 달콤한 딸기 마카롱과 라떼!')">
-                                <div class="polaroid-img">🍰</div>
-                                <div class="polaroid-caption">최애 디저트 타임</div>
+                            <div class="polaroid-item" onclick="alert('치이카와 댄스타임 💃')">
+                                <div class="photo-display">
+                                    <img src="assets/stickers/sticker_32.png" alt="dance">
+                                </div>
+                                <div class="photo-title">Dance Practice</div>
+                                <div class="photo-date">2026. 11. 10</div>
                             </div>
-                            <div class="polaroid-card" onclick="alert('🎮 게임 개발하면서 한 컷!')">
-                                <div class="polaroid-img">👾</div>
-                                <div class="polaroid-caption">두근두근 코딩</div>
+                            <div class="polaroid-item" onclick="alert('선글라스 끼고 힙한 하루 😎')">
+                                <div class="photo-display">
+                                    <img src="assets/stickers/sticker_16.png" alt="cool usagi">
+                                </div>
+                                <div class="photo-title">Chill Vibes</div>
+                                <div class="photo-date">2026. 11. 05</div>
                             </div>
-                            <div class="polaroid-card" onclick="alert('🐱 길에서 만난 치즈 냥이')">
-                                <div class="polaroid-img">🐾</div>
-                                <div class="polaroid-caption">귀여운 고양이</div>
+                            <div class="polaroid-item" onclick="alert('용감한 토벌 출동! ⚔️')">
+                                <div class="photo-display">
+                                    <img src="assets/stickers/sticker_28.png" alt="sasumata">
+                                </div>
+                                <div class="photo-title">Mission Start</div>
+                                <div class="photo-date">2026. 10. 28</div>
                             </div>
                         </div>
                     </section>
 
                     <!-- 5. [방명록 탭] -->
-                    <section class="tab-section" id="tab-guestbook">
-                        <div class="sub-title">
-                            <span>💌</span> 비밀이야! 방명록
+                    <section class="section-view" id="view-guestbook">
+                        <div class="section-header-row" style="margin-bottom:14px;">
+                            <h3>Guestbook</h3>
+                            <span class="count-badge">Leave a message</span>
                         </div>
 
-                        <!-- 방명록 작성 박스 -->
-                        <div class="guestbook-input-box">
-                            <div class="input-row">
-                                <input type="text" id="guestName" class="guest-input name" placeholder="작성자 이름" maxlength="10">
-                                <span style="font-size:1.1rem; align-self:center; color:#888;">스티커: </span>
-                                <select id="guestSticker" class="guest-input">
-                                    <option value="🌸">🌸 벚꽃</option>
-                                    <option value="💖">💖 하트</option>
-                                    <option value="🍓">🍓 딸기</option>
-                                    <option value="🐱">🐱 고양이</option>
-                                    <option value="🎀">🎀 리본</option>
-                                </select>
+                        <!-- 작성 박스 -->
+                        <div class="guest-compose-box">
+                            <div class="compose-header">
+                                <input type="text" id="guestName" class="compose-input compose-name" placeholder="닉네임" maxlength="12">
+                                <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">스티커 선택:</span>
+                                <div class="sticker-selector" id="stickerPalette">
+                                    <!-- JS로 치이카와 스티커들 생성 -->
+                                </div>
                             </div>
-                            <textarea id="guestContent" class="guest-textarea" placeholder="은지에게 다정한 한 마디를 남겨주세요! (새로고침해도 보존돼요)"></textarea>
-                            <button class="guest-submit-btn" onclick="addGuestMessage()">방명록 남기기 ✎</button>
+                            <textarea id="guestText" class="compose-textarea" placeholder="은지에게 한 줄 메시지를 남겨보세요! (새로고침해도 보존돼요)"></textarea>
+                            <button class="compose-submit-btn" onclick="submitGuestbook()">Post Message</button>
                             <div style="clear:both;"></div>
                         </div>
 
                         <!-- 방명록 리스트 -->
-                        <div class="guest-list" id="guestList">
-                            <!-- 자바스크립트로 렌더링 -->
+                        <div class="guest-entry-list" id="guestEntryList">
+                            <!-- JS로 렌더링 -->
                         </div>
                     </section>
 
                 </div>
+
             </main>
 
-            <!-- 오른쪽 사이드 탭 메뉴 -->
-            <ul class="tab-menu-list">
-                <li class="tab-item active" onclick="switchTab('tab-home', this)">홈</li>
-                <li class="tab-item" onclick="switchTab('tab-profile', this)">프로필</li>
-                <li class="tab-item" onclick="switchTab('tab-diary', this)">다이어리</li>
-                <li class="tab-item" onclick="switchTab('tab-photo', this)">사진첩</li>
-                <li class="tab-item" onclick="switchTab('tab-guestbook', this)">방명록</li>
+            <!-- 오른쪽 사이드 탭 버튼 -->
+            <ul class="tabs-container">
+                <li class="tab-btn active" onclick="switchTab('view-home', this, 'eunji\'s space * ੈ✩')">HOME</li>
+                <li class="tab-btn" onclick="switchTab('view-profile', this, 'profile & about')">ABOUT</li>
+                <li class="tab-btn" onclick="switchTab('view-diary', this, 'daily records')">DIARY</li>
+                <li class="tab-btn" onclick="switchTab('view-photo', this, 'photo archive')">PHOTO</li>
+                <li class="tab-btn" onclick="switchTab('view-guestbook', this, 'guestbook')">GUEST</li>
             </ul>
 
         </div>
 
-        <!-- 하단 도토리 알림 바 -->
-        <div class="dotori-bar">
-            <span>보유 도토리: <b>999개</b> 🌰</span> | <span>일촌 신청 대기: <b>3건</b> 💌</span>
-        </div>
     </div>
 
     <!-- 스크립트 인터랙션 -->
     <script>
         // 1. 탭 전환 기능
-        function switchTab(tabId, element) {
-            // 모든 탭 버튼 비활성화
-            document.querySelectorAll('.tab-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            // 클릭된 탭 활성화
-            element.classList.add('active');
+        function switchTab(viewId, btnEl, titleText) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
 
-            // 모든 섹션 숨기기
-            document.querySelectorAll('.tab-section').forEach(sec => {
-                sec.classList.remove('active');
-            });
-            // 해당 섹션 열기
-            const activeSection = document.getElementById(tabId);
-            if (activeSection) {
-                activeSection.classList.add('active');
+            document.querySelectorAll('.section-view').forEach(v => v.classList.remove('active'));
+            const target = document.getElementById(viewId);
+            if (target) target.classList.add('active');
+
+            if (titleText) {
+                document.getElementById('viewTitle').innerText = titleText;
             }
         }
 
-        // 2. 미니미 클릭 시 대사 말풍선 띄우기
-        const speechList = [
-            "오늘도 놀러와줘서 고마워요! 💕",
-            "도토리 하나 선물해 주실래요? 🌰",
-            "내 파니룸 어때요? 핑크핑크하죠? 🌸",
-            "방명록에 흔적 남겨주기 약속! 🤙",
-            "맛있는 딸기 마카롱 먹고 싶다 🍓",
-            "BGM 들으면서 힐링하고 가세요 🎵"
-        ];
+        function switchTabDirect(tabName) {
+            const map = {
+                'diary': { id: 'view-diary', title: 'daily records', index: 2 },
+                'photo': { id: 'view-photo', title: 'photo archive', index: 3 },
+                'profile': { id: 'view-profile', title: 'profile & about', index: 1 }
+            };
+            const item = map[tabName];
+            if (item) {
+                const btns = document.querySelectorAll('.tab-btn');
+                switchTab(item.id, btns[item.index], item.title);
+            }
+        }
+
+        // 2. 미니룸 인터랙티브 말풍선
         let speechTimer = null;
-
-        function clickAvatar() {
-            const speechBox = document.getElementById('avatarSpeech');
-            const randomMsg = speechList[Math.floor(Math.random() * speechList.length)];
-            speechBox.innerText = randomMsg;
-            speechBox.style.display = 'block';
+        function popSpeech(msg) {
+            const bubble = document.getElementById('speechBubble');
+            bubble.innerText = msg;
+            bubble.style.display = 'block';
 
             if (speechTimer) clearTimeout(speechTimer);
             speechTimer = setTimeout(() => {
-                speechBox.style.display = 'none';
-            }, 3000);
+                bubble.style.display = 'none';
+            }, 3200);
         }
 
-        function sayDecor(msg) {
-            const speechBox = document.getElementById('avatarSpeech');
-            speechBox.innerText = msg;
-            speechBox.style.display = 'block';
-
-            if (speechTimer) clearTimeout(speechTimer);
-            speechTimer = setTimeout(() => {
-                speechBox.style.display = 'none';
-            }, 3500);
+        function triggerUsagiReaction() {
+            const quotes = [
+                "우라~~ 야하-!! 🐰",
+                "이히히~ 놀러왔냐구! ✨",
+                "궁디팡팡 해주실래요? (살랑살랑)",
+                "오늘 하루도 화이팅이다냥! 💖"
+            ];
+            const q = quotes[Math.floor(Math.random() * quotes.length)];
+            popSpeech(q);
         }
 
-        // 3. BGM 토글 시뮬레이션
-        let isPlaying = true;
-        function toggleBGM() {
-            const btn = document.getElementById('bgmToggleBtn');
-            const note = document.querySelector('.bgm-note');
+        // 3. BGM 재생/일시정지 토글
+        let isPlaying = false;
+        const playBtn = document.getElementById('playBtn');
+        function toggleMusic() {
             isPlaying = !isPlaying;
             if (isPlaying) {
-                btn.innerText = "재생 중 ▶";
-                btn.style.background = "var(--main-pink)";
-                note.style.animationPlayState = "running";
+                playBtn.innerText = "❚❚";
+                playBtn.style.background = "var(--primary-pink)";
             } else {
-                btn.innerText = "일시정지 ❚❚";
-                btn.style.background = "#aaa";
-                note.style.animationPlayState = "paused";
+                playBtn.innerText = "▶";
+                playBtn.style.background = "var(--text-title)";
             }
         }
 
-        // 4. 로컬 방명록 기능
-        const defaultGuests = [
-            { name: "도토리요정", sticker: "🌰", text: "미니룸 진짜 파니랜드 같아서 너무 추억 돋아요! 예쁘게 잘 꾸미셨네요 ㅎㅎ", date: "2026.11.12" },
-            { name: "은지팬클럽", sticker: "💖", text: "은지님 항상 응원해요! 감기 조심하시구 행복한 하루 보내세요~", date: "2026.11.11" },
-            { name: "싸이일촌", sticker: "🌸", text: "퍼가요~♡ 반사 와주실거죠?", date: "2026.11.10" }
+        // 4. 방명록 스티커 선택 & 저장
+        const availableStickers = [
+            'assets/stickers/sticker_14.png', // Usagi smile
+            'assets/stickers/sticker_8.png',  // Hachiware hearts
+            'assets/stickers/sticker_16.png', // Usagi cool
+            'assets/stickers/sticker_3.png',  // Chiikawa tear
+            'assets/stickers/sticker_26.png', // Usagi wave
+            'assets/stickers/sticker_32.png', // Chiikawa dance
+            'assets/stickers/sticker_34.png'  // Kurimanju
         ];
+        let selectedSticker = availableStickers[0];
 
-        function loadGuestMessages() {
-            const saved = localStorage.getItem('eunji_guestbook');
-            const list = saved ? JSON.parse(saved) : defaultGuests;
-            const container = document.getElementById('guestList');
+        function initStickerPalette() {
+            const container = document.getElementById('stickerPalette');
             container.innerHTML = '';
-
-            list.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'guest-entry';
-                div.innerHTML = `
-                    <div class="guest-header">
-                        <span class="user">${item.sticker} ${escapeHtml(item.name)}</span>
-                        <span>${item.date}</span>
-                    </div>
-                    <div class="guest-text">${escapeHtml(item.text)}</div>
-                `;
-                container.appendChild(div);
+            availableStickers.forEach((src, idx) => {
+                const btn = document.createElement('div');
+                btn.className = 'sticker-option' + (idx === 0 ? ' selected' : '');
+                btn.innerHTML = `<img src="${src}" alt="sticker">`;
+                btn.onclick = () => {
+                    document.querySelectorAll('.sticker-option').forEach(s => s.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selectedSticker = src;
+                };
+                container.appendChild(btn);
             });
         }
 
-        function addGuestMessage() {
-            const nameInput = document.getElementById('guestName');
-            const contentInput = document.getElementById('guestContent');
-            const stickerSelect = document.getElementById('guestSticker');
+        // 기본 방명록 데이터
+        const defaultGuestEntries = [
+            {
+                name: "민지",
+                sticker: "assets/stickers/sticker_8.png",
+                message: "홈피 구경하다가 감탄하고 감 ㅋㅋㅋ 우사기 너무 찰떡이다 은지야 🤍",
+                date: "2026. 11. 12"
+            },
+            {
+                name: "하치와레 팬",
+                sticker: "assets/stickers/sticker_14.png",
+                message: "야하-! 파도타기 타고 들어왔습니다. 미감이 아주 트렌디하네요 ✨",
+                date: "2026. 11. 11"
+            },
+            {
+                name: "과제맨",
+                sticker: "assets/stickers/sticker_3.png",
+                message: "종강 언제 오냐... 은지 홈피 와서 힐링하고 갑니다 총총",
+                date: "2026. 11. 10"
+            }
+        ];
 
-            const name = nameInput.value.trim() || '익명의 일촌';
-            const text = contentInput.value.trim();
-            const sticker = stickerSelect.value;
+        function renderGuestEntries() {
+            const raw = localStorage.getItem('eunji_guest_2026');
+            const list = raw ? JSON.parse(raw) : defaultGuestEntries;
+            const container = document.getElementById('guestEntryList');
+            container.innerHTML = '';
 
-            if (!text) {
-                alert('방명록 내용을 입력해주세요! 🎀');
+            list.forEach(entry => {
+                const card = document.createElement('div');
+                card.className = 'guest-entry-card';
+                card.innerHTML = `
+                    <div class="guest-sticker-avatar">
+                        <img src="${entry.sticker}" alt="sticker">
+                    </div>
+                    <div class="guest-body">
+                        <div class="guest-top">
+                            <span class="guest-author">${escapeHtml(entry.name)}</span>
+                            <span class="guest-date">${entry.date}</span>
+                        </div>
+                        <div class="guest-message">${escapeHtml(entry.message)}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function submitGuestbook() {
+            const nameEl = document.getElementById('guestName');
+            const textEl = document.getElementById('guestText');
+
+            const name = nameEl.value.trim() || '익명의 친구';
+            const message = textEl.value.trim();
+
+            if (!message) {
+                alert('메시지를 입력해주세요! 🐰');
                 return;
             }
 
             const now = new Date();
-            const dateStr = `${now.getFullYear()}.${now.getMonth()+1}.${now.getDate()}`;
+            const dateStr = `${now.getFullYear()}. ${String(now.getMonth()+1).padStart(2,'0')}. ${String(now.getDate()).padStart(2,'0')}`;
 
-            const saved = localStorage.getItem('eunji_guestbook');
-            const list = saved ? JSON.parse(saved) : [...defaultGuests];
+            const raw = localStorage.getItem('eunji_guest_2026');
+            const list = raw ? JSON.parse(raw) : [...defaultGuestEntries];
 
-            list.unshift({ name, sticker, text, date: dateStr });
-            localStorage.setItem('eunji_guestbook', JSON.stringify(list));
-
-            nameInput.value = '';
-            contentInput.value = '';
-            loadGuestMessages();
-            alert('방명록이 등록되었습니다! 💕');
-        }
-
-        function escapeHtml(string) {
-            return String(string).replace(/[&<>"'`=\/]/g, function (s) {
-                return ({
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    '"': '&quot;',
-                    "'": '&#39;',
-                    '/': '&#x2F;',
-                    '=': '&#x3D;',
-                    '`': '&#x60;'
-                })[s];
+            list.unshift({
+                name,
+                sticker: selectedSticker,
+                message,
+                date: dateStr
             });
+
+            localStorage.setItem('eunji_guest_2026', JSON.stringify(list));
+            nameEl.value = '';
+            textEl.value = '';
+            renderGuestEntries();
+            alert('방명록이 등록되었습니다! ✨');
         }
 
-        // 5. 방문자수 랜덤 증가 시뮬레이션
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"'`=\/]/g, s => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '/': '&#x2F;', '=': '&#x3D;', '`': '&#x60;'
+            })[s]);
+        }
+
+        // 초기화
         window.addEventListener('DOMContentLoaded', () => {
-            loadGuestMessages();
-            const todayCount = document.getElementById('todayCount');
-            const currentToday = parseInt(todayCount.innerText) || 404;
-            todayCount.innerText = currentToday + Math.floor(Math.random() * 5) + 1;
+            initStickerPalette();
+            renderGuestEntries();
+            const todayEl = document.getElementById('todayNum');
+            todayEl.innerText = parseInt(todayEl.innerText) + Math.floor(Math.random() * 4);
         });
     </script>
+
 </body>
 </html>
